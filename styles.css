@@ -1,0 +1,140 @@
+* { box-sizing: border-box; }
+
+:root {
+  color-scheme: dark;
+  --bg: #050707;
+  --panel: #0c1616;
+  --text: #f4f7f7;
+  --muted: #aab6b6;
+  --line: rgba(255,255,255,0.12);
+  --accent: #4fb7ae;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, rgba(79,183,174,0.16), transparent 34rem), var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a { color: var(--accent); }
+
+.page {
+  min-height: calc(100vh - 72px);
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+.hero {
+  width: min(760px, 100%);
+  padding: 4rem 2rem;
+  text-align: center;
+  background: rgba(12, 22, 22, 0.72);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2.3rem, 8vw, 5.2rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.tagline {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(1.15rem, 3vw, 1.55rem);
+  font-weight: 700;
+}
+
+.description {
+  max-width: 620px;
+  margin: 1.2rem auto 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+  min-height: 48px;
+  padding: 0.8rem 1.2rem;
+  border-radius: 999px;
+  background: var(--text);
+  color: #050707;
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.button.secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+footer {
+  padding: 1.5rem;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.content {
+  width: min(880px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 4rem;
+}
+
+.content h1 {
+  margin-top: 1.5rem;
+  font-size: clamp(2rem, 6vw, 3.8rem);
+}
+
+.content h2 {
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+  font-size: 1.35rem;
+}
+
+.content p, .content li { color: var(--muted); }
+.content strong { color: var(--text); }
+
+.back {
+  display: inline-block;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+ol, ul { padding-left: 1.4rem; }
+
+@media (max-width: 560px) {
+  .hero { padding: 3rem 1.25rem; }
+  .actions { flex-direction: column; }
+  .button { width: 100%; }
+}
