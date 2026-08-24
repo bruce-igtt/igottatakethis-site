@@ -3,27 +3,120 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>I Gotta Take This</title>
-  <meta name="description" content="I Gotta Take This helps users schedule realistic simulated incoming calls for graceful exits.">
+  <title>I Gotta Take This | Graceful exits when life gets complicated</title>
+  <meta name="description" content="I Gotta Take This helps you schedule realistic simulated incoming calls so you can leave uncomfortable, awkward, or uncertain situations gracefully and safely.">
+  <meta name="theme-color" content="#041011">
+  <meta property="og:title" content="I Gotta Take This">
+  <meta property="og:description" content="Graceful exits when life gets complicated.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://igottatakethis.com/">
+  <link rel="icon" href="assets/favicon-64.png" type="image/png"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
 </head>
 <body>
-  <main class="page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="I Gotta Take This home">
+        <img class="brand-icon" src="assets/igtt-icon.png" alt="">
+        <span class="brand-copy"><span class="brand-name">I Gotta Take This</span><span class="brand-tagline">Graceful exits when life gets complicated.</span></span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-label="Open navigation" data-menu-button>☰</button>
+      <nav class="nav" aria-label="Primary" data-menu>
+        <a class="active" href="index.html" aria-current="page">Home</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="practical-uses.html">Practical Uses</a>
+        <a href="features.html">Features</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="support.html">Support</a>
+      </nav>
+      <a class="header-cta" href="#download">Download the App</a>
+    </div>
+  </header>
+
+  <main id="main">
     <section class="hero">
-      <p class="eyebrow">Golden Fusion Enterprise, LLC</p>
-      <h1>I Gotta Take This</h1>
-      <p class="tagline">Graceful exits when life gets complicated.</p>
-      <p class="description">
-        IGTT helps users create realistic simulated incoming calls for situations when they need a discreet, graceful way to step away.
-      </p>
-      <div class="actions">
-        <a class="button" href="support.html">Support</a>
-        <a class="button secondary" href="privacy.html">Privacy Policy</a>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Discreet. Reliable. Your exit plan.</p>
+          <h1>When you need out,<br><span class="accent">we make it easy.</span></h1>
+          <p class="lead">I Gotta Take This helps you schedule realistic, simulated incoming calls so you can leave uncomfortable, awkward, or uncertain situations—gracefully and safely.</p>
+          <div class="download-card" id="download">
+            <img class="app-icon" src="assets/igtt-icon.png" alt="I Gotta Take This app icon">
+            <div class="download-copy"><strong>Take control of your exits.</strong><span>Download IGTT and leave with confidence.</span></div>
+            <div class="store-badges" aria-label="App store links coming soon">
+              <a class="store-badge" href="#download" data-store="apple" aria-disabled="true" title="App Store link will be activated after approval">
+                <span class="store-symbol" aria-hidden="true">●</span><span><span class="store-small">Download on the</span><span class="store-name">App Store</span></span>
+              </a>
+              <a class="store-badge" href="#download" data-store="google" aria-disabled="true" title="Google Play link will be activated after approval">
+                <span class="play-mark" aria-hidden="true"></span><span><span class="store-small">Get it on</span><span class="store-name">Google Play</span></span>
+              </a>
+            </div>
+          </div>
+          <p class="privacy-note"><span class="mini-lock" aria-hidden="true">▣</span> Private by design. Your safety and data stay yours.</p>
+        </div>
+
+        <div class="phone-stage" aria-label="Illustration of the I Gotta Take This app">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="phone-status"><span>9:41</span><span>● ● ▰</span></div>
+              <div class="phone-title"><span>☰</span><strong>I Gotta Take This</strong><span>⚙</span></div>
+              <div class="phone-label">Next Exit</div>
+              <div class="next-call"><div><strong>In 10:00</strong><span>Mom · Mobile</span></div><div class="call-button">☎</div></div>
+              <div class="recent">
+                <div class="phone-label">Recent Calls</div>
+                <div class="recent-row"><div><small>Today, 8:30 PM</small><strong>Work</strong></div><span>Completed ✓</span></div>
+                <div class="recent-row"><div><small>May 23, 6:15 PM</small><strong>Friend</strong></div><span>Completed ✓</span></div>
+                <div class="recent-row"><div><small>May 22, 9:00 PM</small><strong>Unknown</strong></div><span>Completed ✓</span></div>
+              </div>
+              <div class="phone-main-button">Schedule Exit</div>
+              <div class="phone-secondary">Quick Exit Now</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact">
+      <div class="container card-grid three">
+        <article class="card feature-card"><div class="icon-badge">◇</div><h3>Discreet Exit Planning</h3><p>Schedule a call in advance or create one on the spot. The experience is designed to feel natural and unobtrusive.</p></article>
+        <article class="card feature-card"><div class="icon-badge">☎</div><h3>Realistic Incoming Calls</h3><p>Convincing caller identities, audio, timing, and call screens help the interruption feel believable.</p></article>
+        <article class="card feature-card"><div class="icon-badge">◉</div><h3>Immediate or Escalating</h3><p>Choose one urgent call or a three-call escalating sequence when you want extra reinforcement.</p></article>
+      </div>
+    </section>
+
+    <section class="section compact use-cases">
+      <div class="container">
+        <div class="section-heading center"><h2>For life’s uncomfortable moments</h2><p class="lead">Create space, protect your peace, and give yourself a graceful reason to step away.</p></div>
+        <div class="card-grid three">
+          <article class="card use-case-card"><div class="scenario"><div class="scenario-art" aria-hidden="true">◒</div><div><h3>Bad Date</h3><p>The date isn’t going well? Create a natural interruption and make a graceful exit.</p></div></div></article>
+          <article class="card use-case-card"><div class="scenario"><div class="scenario-art" aria-hidden="true">▰</div><div><h3>Uncomfortable Meeting</h3><p>End a meeting or conversation that has become unproductive or uncomfortable.</p></div></div></article>
+          <article class="card use-case-card"><div class="scenario"><div class="scenario-art" aria-hidden="true">✈</div><div><h3>Travel Safety</h3><p>When something doesn’t feel right while traveling, create a believable reason to leave.</p></div></div></article>
+        </div>
+        <div class="hero-actions" style="justify-content:center; margin-top:2rem"><a class="button secondary" href="practical-uses.html">Explore Practical Uses</a></div>
+      </div>
+    </section>
+
+    <section class="section compact">
+      <div class="container callout">
+        <img class="app-icon" src="assets/igtt-icon.png" alt="">
+        <div><h3>Your peace of mind is just a tap away.</h3><p>IGTT is built for discreet, user-controlled exits.</p></div>
+        <a class="button primary" href="#download">Get IGTT</a>
       </div>
     </section>
   </main>
-  <footer>
-    <p>&copy; 2026 Golden Fusion Enterprise, LLC. All rights reserved.</p>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><img class="brand-icon" src="assets/igtt-icon.png" alt=""><div><div class="footer-title">I Gotta Take This</div><div class="footer-tag">Graceful exits when life gets complicated.</div></div></div>
+        <div class="footer-col"><h4>Explore</h4><a href="how-it-works.html">How It Works</a><a href="practical-uses.html">Practical Uses</a><a href="features.html">Features</a></div>
+        <div class="footer-col"><h4>Legal</h4><a href="privacy.html">Privacy Policy</a></div>
+        <div class="footer-col"><h4>Support</h4><a href="support.html">Help & Support</a><a href="mailto:support@igottatakethis.com">Email Support</a></div>
+      </div>
+      <div class="footer-bottom"><span>© <span data-year>2026</span> Golden Fusion Enterprise, LLC. All rights reserved.</span><span>Designed for discreet, graceful exits.</span></div>
+    </div>
   </footer>
 </body>
 </html>
