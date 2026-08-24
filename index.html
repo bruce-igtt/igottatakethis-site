@@ -3,120 +3,895 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>I Gotta Take This | Graceful exits when life gets complicated</title>
-  <meta name="description" content="I Gotta Take This helps you schedule realistic simulated incoming calls so you can leave uncomfortable, awkward, or uncertain situations gracefully and safely.">
+
+  <meta
+    name="description"
+    content="I Gotta Take This helps you schedule realistic simulated incoming calls so you can leave uncomfortable, awkward, or uncertain situations gracefully and safely."
+  >
+
   <meta name="theme-color" content="#041011">
+
   <meta property="og:title" content="I Gotta Take This">
-  <meta property="og:description" content="Graceful exits when life gets complicated.">
+  <meta
+    property="og:description"
+    content="Graceful exits when life gets complicated."
+  >
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://igottatakethis.com/">
-  <link rel="icon" href="assets/favicon-64.png" type="image/png"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <link
+    rel="icon"
+    href="assets/favicon-64.png"
+    type="image/png"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="assets/apple-touch-icon.png"
+  >
+
   <link rel="stylesheet" href="styles.css">
   <script src="site.js" defer></script>
+
+  <!--
+    Homepage-only styling for the phone illustration.
+    This keeps the website illustration closely aligned
+    with the actual IGTT v1.2 Home screen without
+    requiring changes to styles.css.
+  -->
+  <style>
+    .igtt-phone-screen {
+      min-height: 556px;
+      border-radius: 34px;
+      overflow: hidden;
+      background: #000;
+      padding: 1.05rem 1.1rem 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .igtt-phone-status {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #dfe5e5;
+      font-size: .66rem;
+      margin-bottom: .35rem;
+    }
+
+    .igtt-phone-toolbar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      min-height: 34px;
+      color: #fff;
+      margin-bottom: .35rem;
+    }
+
+    .igtt-phone-gear {
+      font-size: 1.05rem;
+      line-height: 1;
+    }
+
+    .igtt-app-heading {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .igtt-app-heading strong {
+      display: block;
+      color: #fff;
+      font-size: 1.52rem;
+      line-height: 1.15;
+      letter-spacing: -.04em;
+    }
+
+    .igtt-app-heading span {
+      display: block;
+      margin: .55rem auto 1.35rem;
+      color: rgba(185, 192, 193, .88);
+      font-size: .72rem;
+      line-height: 1.35;
+      max-width: 210px;
+    }
+
+    .igtt-schedule-button {
+      width: 100%;
+      min-height: 55px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 1.05rem;
+      border-radius: 16px;
+      background: #fff;
+      color: #050707;
+      font-weight: 800;
+      font-size: .92rem;
+    }
+
+    .igtt-next-card {
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(39, 104, 162, .18);
+      border: 1px solid rgba(119, 171, 214, .16);
+    }
+
+    .igtt-next-label {
+      text-align: center;
+      color: #858f91;
+      font-size: .62rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: .8rem;
+    }
+
+    .igtt-caller-row {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+
+    .igtt-caller-avatar {
+      width: 43px;
+      height: 43px;
+      min-width: 43px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, .11);
+      border: 1px solid rgba(255, 255, 255, .1);
+      color: #fff;
+      font-weight: 800;
+      font-size: .78rem;
+    }
+
+    .igtt-caller-copy {
+      min-width: 0;
+    }
+
+    .igtt-caller-copy strong {
+      display: block;
+      color: #fff;
+      font-size: .88rem;
+      line-height: 1.25;
+    }
+
+    .igtt-caller-copy span {
+      display: block;
+      color: #a8b0b1;
+      font-size: .72rem;
+      line-height: 1.35;
+      margin-top: .15rem;
+    }
+
+    .igtt-caller-copy small {
+      display: block;
+      color: #66aeea;
+      font-size: .66rem;
+      margin-top: .15rem;
+    }
+
+    .igtt-cancel-button {
+      width: 100%;
+      min-height: 39px;
+      display: grid;
+      place-items: center;
+      margin-top: .9rem;
+      border-radius: 13px;
+      background: rgba(255, 255, 255, .08);
+      color: #f17777;
+      font-size: .72rem;
+      font-weight: 750;
+    }
+
+    .igtt-phone-footer {
+      margin-top: auto;
+      padding-top: 1.1rem;
+      text-align: center;
+      color: #747f80;
+      line-height: 1.45;
+    }
+
+    .igtt-phone-footer span {
+      display: block;
+      font-size: .59rem;
+    }
+
+    .igtt-phone-footer small {
+      display: block;
+      font-size: .52rem;
+      color: #667172;
+    }
+  </style>
 </head>
+
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+
+  <a class="skip-link" href="#main">
+    Skip to content
+  </a>
+
   <header class="site-header">
+
     <div class="header-inner">
-      <a class="brand" href="index.html" aria-label="I Gotta Take This home">
-        <img class="brand-icon" src="assets/igtt-icon.png" alt="">
-        <span class="brand-copy"><span class="brand-name">I Gotta Take This</span><span class="brand-tagline">Graceful exits when life gets complicated.</span></span>
+
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="I Gotta Take This home"
+      >
+        <img
+          class="brand-icon"
+          src="assets/igtt-icon.png"
+          alt=""
+        >
+
+        <span class="brand-copy">
+
+          <span class="brand-name">
+            I Gotta Take This
+          </span>
+
+          <span class="brand-tagline">
+            Graceful exits when life gets complicated.
+          </span>
+
+        </span>
       </a>
-      <button class="menu-button" type="button" aria-expanded="false" aria-label="Open navigation" data-menu-button>☰</button>
-      <nav class="nav" aria-label="Primary" data-menu>
-        <a class="active" href="index.html" aria-current="page">Home</a>
-        <a href="how-it-works.html">How It Works</a>
-        <a href="practical-uses.html">Practical Uses</a>
-        <a href="features.html">Features</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="support.html">Support</a>
+
+      <button
+        class="menu-button"
+        type="button"
+        aria-expanded="false"
+        aria-label="Open navigation"
+        data-menu-button
+      >
+        ☰
+      </button>
+
+      <nav
+        class="nav"
+        aria-label="Primary"
+        data-menu
+      >
+        <a
+          class="active"
+          href="index.html"
+          aria-current="page"
+        >
+          Home
+        </a>
+
+        <a href="how-it-works.html">
+          How It Works
+        </a>
+
+        <a href="practical-uses.html">
+          Practical Uses
+        </a>
+
+        <a href="features.html">
+          Features
+        </a>
+
+        <a href="privacy.html">
+          Privacy
+        </a>
+
+        <a href="support.html">
+          Support
+        </a>
       </nav>
-      <a class="header-cta" href="#download">Download the App</a>
+
+      <a
+        class="header-cta"
+        href="#download"
+      >
+        Download the App
+      </a>
+
     </div>
+
   </header>
 
+
   <main id="main">
+
+    <!-- HERO -->
+
     <section class="hero">
+
       <div class="container hero-grid">
+
         <div class="hero-copy">
-          <p class="eyebrow">Discreet. Reliable. Your exit plan.</p>
-          <h1>When you need out,<br><span class="accent">we make it easy.</span></h1>
-          <p class="lead">I Gotta Take This helps you schedule realistic, simulated incoming calls so you can leave uncomfortable, awkward, or uncertain situations—gracefully and safely.</p>
-          <div class="download-card" id="download">
-            <img class="app-icon" src="assets/igtt-icon.png" alt="I Gotta Take This app icon">
-            <div class="download-copy"><strong>Take control of your exits.</strong><span>Download IGTT and leave with confidence.</span></div>
-            <div class="store-badges" aria-label="App store links coming soon">
-              <a class="store-badge" href="#download" data-store="apple" aria-disabled="true" title="App Store link will be activated after approval">
-                <span class="store-symbol" aria-hidden="true">●</span><span><span class="store-small">Download on the</span><span class="store-name">App Store</span></span>
-              </a>
-              <a class="store-badge" href="#download" data-store="google" aria-disabled="true" title="Google Play link will be activated after approval">
-                <span class="play-mark" aria-hidden="true"></span><span><span class="store-small">Get it on</span><span class="store-name">Google Play</span></span>
-              </a>
+
+          <p class="eyebrow">
+            Discreet. Reliable. Your exit plan.
+          </p>
+
+          <h1>
+            When you need out,<br>
+            <span class="accent">
+              we make it easy.
+            </span>
+          </h1>
+
+          <p class="lead">
+            I Gotta Take This helps you schedule realistic,
+            simulated incoming calls so you can leave
+            uncomfortable, awkward, or uncertain situations—
+            gracefully and safely.
+          </p>
+
+
+          <!-- DOWNLOAD AREA -->
+
+          <div
+            class="download-card"
+            id="download"
+          >
+
+            <img
+              class="app-icon"
+              src="assets/igtt-icon.png"
+              alt="I Gotta Take This app icon"
+            >
+
+            <div class="download-copy">
+
+              <strong>
+                Take control of your exits.
+              </strong>
+
+              <span>
+                Download IGTT and leave with confidence.
+              </span>
+
             </div>
+
+
+            <div
+              class="store-badges"
+              aria-label="App store links coming soon"
+            >
+
+              <a
+                class="store-badge"
+                href="#download"
+                data-store="apple"
+                aria-disabled="true"
+                title="App Store link will be activated after approval"
+              >
+
+                <span
+                  class="store-symbol"
+                  aria-hidden="true"
+                >
+                  ●
+                </span>
+
+                <span>
+
+                  <span class="store-small">
+                    Download on the
+                  </span>
+
+                  <span class="store-name">
+                    App Store
+                  </span>
+
+                </span>
+
+              </a>
+
+
+              <a
+                class="store-badge"
+                href="#download"
+                data-store="google"
+                aria-disabled="true"
+                title="Google Play link will be activated after approval"
+              >
+
+                <span
+                  class="play-mark"
+                  aria-hidden="true"
+                ></span>
+
+                <span>
+
+                  <span class="store-small">
+                    Get it on
+                  </span>
+
+                  <span class="store-name">
+                    Google Play
+                  </span>
+
+                </span>
+
+              </a>
+
+            </div>
+
           </div>
-          <p class="privacy-note"><span class="mini-lock" aria-hidden="true">▣</span> Private by design. Your safety and data stay yours.</p>
+
+
+          <p class="privacy-note">
+
+            <span
+              class="mini-lock"
+              aria-hidden="true"
+            >
+              ▣
+            </span>
+
+            Private by design. Core app data stays on your device.
+
+          </p>
+
         </div>
 
-        <div class="phone-stage" aria-label="Illustration of the I Gotta Take This app">
+
+        <!--
+          PHONE ILLUSTRATION
+
+          This intentionally mirrors the actual v1.2 Home screen.
+          It is a marketing illustration, not a claim of features
+          that are not present in the shipping application.
+        -->
+
+        <div
+          class="phone-stage"
+          aria-label="Illustration of the I Gotta Take This v1.2 home screen"
+        >
+
           <div class="phone">
-            <div class="phone-screen">
-              <div class="phone-status"><span>9:41</span><span>● ● ▰</span></div>
-              <div class="phone-title"><span>☰</span><strong>I Gotta Take This</strong><span>⚙</span></div>
-              <div class="phone-label">Next Exit</div>
-              <div class="next-call"><div><strong>In 10:00</strong><span>Mom · Mobile</span></div><div class="call-button">☎</div></div>
-              <div class="recent">
-                <div class="phone-label">Completed Exits</div>
-                <div class="recent-row"><div><small>Today, 8:30 PM</small><strong>Work</strong></div><span>Completed ✓</span></div>
-                <div class="recent-row"><div><small>May 23, 6:15 PM</small><strong>Friend</strong></div><span>Completed ✓</span></div>
-                <div class="recent-row"><div><small>May 22, 9:00 PM</small><strong>Unknown</strong></div><span>Completed ✓</span></div>
+
+            <div class="igtt-phone-screen">
+
+              <div class="igtt-phone-status">
+                <span>9:41</span>
+                <span>● ● ▰</span>
               </div>
-              <div class="phone-main-button">Schedule Exit</div>
-              <div class="phone-secondary">Quick Exit Now</div>
+
+              <div class="igtt-phone-toolbar">
+                <span
+                  class="igtt-phone-gear"
+                  aria-hidden="true"
+                >
+                  ⚙
+                </span>
+              </div>
+
+
+              <div class="igtt-app-heading">
+
+                <strong>
+                  I Gotta Take This
+                </strong>
+
+                <span>
+                  Graceful exits when life gets complicated.
+                </span>
+
+              </div>
+
+
+              <div class="igtt-schedule-button">
+                Schedule Exit
+              </div>
+
+
+              <div class="igtt-next-card">
+
+                <div class="igtt-next-label">
+                  Next Exit
+                </div>
+
+
+                <div class="igtt-caller-row">
+
+                  <div
+                    class="igtt-caller-avatar"
+                    aria-hidden="true"
+                  >
+                    M
+                  </div>
+
+
+                  <div class="igtt-caller-copy">
+
+                    <strong>
+                      Mom
+                    </strong>
+
+                    <span>
+                      Starting soon
+                    </span>
+
+                    <small>
+                      Starts in 10m
+                    </small>
+
+                  </div>
+
+                </div>
+
+
+                <div class="igtt-cancel-button">
+                  Cancel Exit
+                </div>
+
+              </div>
+
+
+              <div class="igtt-phone-footer">
+
+                <span>
+                  Version 1.2
+                </span>
+
+                <small>
+                  Golden Fusion Enterprises, LLC
+                </small>
+
+              </div>
+
             </div>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
+
+
+
+    <!-- FEATURE CARDS -->
 
     <section class="section compact">
+
       <div class="container card-grid three">
-        <article class="card feature-card"><div class="icon-badge">◇</div><h3>Discreet Exit Planning</h3><p>Schedule a call in advance or create one on the spot. The experience is designed to feel natural and unobtrusive.</p></article>
-        <article class="card feature-card"><div class="icon-badge">☎</div><h3>Realistic Incoming Calls</h3><p>Convincing caller identities, audio, timing, and call screens help the interruption feel believable.</p></article>
-        <article class="card feature-card"><div class="icon-badge">◉</div><h3>Immediate or Escalating</h3><p>Choose one urgent call or a three-call escalating sequence when you want extra reinforcement.</p></article>
+
+        <article class="card feature-card">
+
+          <div class="icon-badge">
+            ◇
+          </div>
+
+          <h3>
+            Discreet Exit Planning
+          </h3>
+
+          <p>
+            Schedule an exit ahead of time or set one up
+            when you need it. The experience is designed
+            to feel natural and unobtrusive.
+          </p>
+
+        </article>
+
+
+        <article class="card feature-card">
+
+          <div class="icon-badge">
+            ☎
+          </div>
+
+          <h3>
+            Realistic Incoming Calls
+          </h3>
+
+          <p>
+            Convincing caller identities, voice audio,
+            timing, and call screens help the interruption
+            feel believable.
+          </p>
+
+        </article>
+
+
+        <article class="card feature-card">
+
+          <div class="icon-badge">
+            ◉
+          </div>
+
+          <h3>
+            Immediate or Escalating
+          </h3>
+
+          <p>
+            Choose one urgent call or a three-call
+            escalating sequence when you want
+            additional reinforcement.
+          </p>
+
+        </article>
+
       </div>
+
     </section>
+
+
+
+    <!-- PRACTICAL USES -->
 
     <section class="section compact use-cases">
+
       <div class="container">
-        <div class="section-heading center"><h2>For life’s uncomfortable moments</h2><p class="lead">Create space, protect your peace, and give yourself a graceful reason to step away.</p></div>
-        <div class="card-grid three">
-          <article class="card use-case-card"><div class="scenario"><div class="scenario-art" aria-hidden="true">◒</div><div><h3>Bad Date</h3><p>The date isn’t going well? Create a natural interruption and make a graceful exit.</p></div></div></article>
-          <article class="card use-case-card"><div class="scenario"><div class="scenario-art" aria-hidden="true">▰</div><div><h3>Uncomfortable Meeting</h3><p>End a meeting or conversation that has become unproductive or uncomfortable.</p></div></div></article>
-          <article class="card use-case-card"><div class="scenario"><div class="scenario-art" aria-hidden="true">✈</div><div><h3>Travel Safety</h3><p>When something doesn’t feel right while traveling, create a believable reason to leave.</p></div></div></article>
+
+        <div class="section-heading center">
+
+          <h2>
+            For life’s uncomfortable moments
+          </h2>
+
+          <p class="lead">
+            Create space, protect your peace, and give
+            yourself a graceful reason to step away.
+          </p>
+
         </div>
-        <div class="hero-actions" style="justify-content:center; margin-top:2rem"><a class="button secondary" href="practical-uses.html">Explore Practical Uses</a></div>
+
+
+        <div class="card-grid three">
+
+          <article class="card use-case-card">
+
+            <div class="scenario">
+
+              <div
+                class="scenario-art"
+                aria-hidden="true"
+              >
+                ◒
+              </div>
+
+              <div>
+
+                <h3>
+                  Bad Date
+                </h3>
+
+                <p>
+                  The date isn’t going well? Create a
+                  natural interruption and make a
+                  graceful exit.
+                </p>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="card use-case-card">
+
+            <div class="scenario">
+
+              <div
+                class="scenario-art"
+                aria-hidden="true"
+              >
+                ▰
+              </div>
+
+              <div>
+
+                <h3>
+                  Uncomfortable Meeting
+                </h3>
+
+                <p>
+                  End a meeting or conversation that has
+                  become unproductive or uncomfortable.
+                </p>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="card use-case-card">
+
+            <div class="scenario">
+
+              <div
+                class="scenario-art"
+                aria-hidden="true"
+              >
+                ✈
+              </div>
+
+              <div>
+
+                <h3>
+                  Travel Safety
+                </h3>
+
+                <p>
+                  When something doesn’t feel right while
+                  traveling, create a believable reason
+                  to leave.
+                </p>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+
+        <div
+          class="hero-actions"
+          style="justify-content:center; margin-top:2rem"
+        >
+
+          <a
+            class="button secondary"
+            href="practical-uses.html"
+          >
+            Explore Practical Uses
+          </a>
+
+        </div>
+
       </div>
+
     </section>
+
+
+
+    <!-- BOTTOM CTA -->
 
     <section class="section compact">
+
       <div class="container callout">
-        <img class="app-icon" src="assets/igtt-icon.png" alt="">
-        <div><h3>Your peace of mind is just a tap away.</h3><p>IGTT is built for discreet, user-controlled exits.</p></div>
-        <a class="button primary" href="#download">Get IGTT</a>
+
+        <img
+          class="app-icon"
+          src="assets/igtt-icon.png"
+          alt=""
+        >
+
+        <div>
+
+          <h3>
+            Your peace of mind is just a tap away.
+          </h3>
+
+          <p>
+            IGTT is built for discreet, user-controlled exits.
+          </p>
+
+        </div>
+
+        <a
+          class="button primary"
+          href="#download"
+        >
+          Get IGTT
+        </a>
+
       </div>
+
     </section>
+
   </main>
 
+
+
+  <!-- FOOTER -->
+
   <footer class="site-footer">
+
     <div class="container">
+
       <div class="footer-grid">
-        <div class="footer-brand"><img class="brand-icon" src="assets/igtt-icon.png" alt=""><div><div class="footer-title">I Gotta Take This</div><div class="footer-tag">Graceful exits when life gets complicated.</div></div></div>
-        <div class="footer-col"><h4>Explore</h4><a href="how-it-works.html">How It Works</a><a href="practical-uses.html">Practical Uses</a><a href="features.html">Features</a></div>
-        <div class="footer-col"><h4>Legal</h4><a href="privacy.html">Privacy Policy</a></div>
-        <div class="footer-col"><h4>Support</h4><a href="support.html">Help & Support</a><a href="mailto:support@igottatakethis.com">Email Support</a></div>
+
+        <div class="footer-brand">
+
+          <img
+            class="brand-icon"
+            src="assets/igtt-icon.png"
+            alt=""
+          >
+
+          <div>
+
+            <div class="footer-title">
+              I Gotta Take This
+            </div>
+
+            <div class="footer-tag">
+              Graceful exits when life gets complicated.
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="footer-col">
+
+          <h4>
+            Explore
+          </h4>
+
+          <a href="how-it-works.html">
+            How It Works
+          </a>
+
+          <a href="practical-uses.html">
+            Practical Uses
+          </a>
+
+          <a href="features.html">
+            Features
+          </a>
+
+        </div>
+
+
+        <div class="footer-col">
+
+          <h4>
+            Legal
+          </h4>
+
+          <a href="privacy.html">
+            Privacy Policy
+          </a>
+
+        </div>
+
+
+        <div class="footer-col">
+
+          <h4>
+            Support
+          </h4>
+
+          <a href="support.html">
+            Help & Support
+          </a>
+
+          <a href="mailto:support@igottatakethis.com">
+            Email Support
+          </a>
+
+        </div>
+
       </div>
-      <div class="footer-bottom"><span>© <span data-year>2026</span> Golden Fusion Enterprise, LLC. All rights reserved.</span><span>Designed for discreet, graceful exits.</span></div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © <span data-year>2026</span>
+          Golden Fusion Enterprise, LLC.
+          All rights reserved.
+        </span>
+
+        <span>
+          Designed for discreet, graceful exits.
+        </span>
+
+      </div>
+
     </div>
+
   </footer>
+
 </body>
 </html>
