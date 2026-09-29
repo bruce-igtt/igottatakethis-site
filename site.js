@@ -1,4 +1,23 @@
 (() => {
+  // Reciprocal Music Palace Radio placement: October 1–December 31, 2026,
+  // inclusive in Eastern time. UTC boundaries account for the DST change.
+  const now = Date.now();
+  const mprStart = Date.parse('2026-10-01T04:00:00Z');
+  const mprEnd = Date.parse('2027-01-01T05:00:00Z');
+  if (now >= mprStart && now < mprEnd) {
+    const header = document.querySelector('.site-header');
+    if (header) {
+      const partner = document.createElement('aside');
+      partner.className = 'partner-banner';
+      partner.setAttribute('aria-label', 'Music Palace Radio partner promotion');
+      partner.innerHTML = `<a class="partner-banner-link" href="https://www.musicpalaceradio.com/?utm_source=igtt&utm_medium=website&utm_campaign=reciprocal_banner_2026" target="_blank" rel="sponsored noopener noreferrer" aria-label="Music Palace Radio — listen live (opens in a new tab)">
+        <img src="assets/mpr-banner-2026-10-01.jpeg" alt="Music Palace Radio. All Music; All the Time. Listen at MusicPalaceRadio.com" width="2048" height="342">
+        <span class="partner-mobile" aria-hidden="true"><strong>Music Palace Radio</strong><span>All Music; All the Time</span><b>Listen ↗</b></span>
+      </a>`;
+      header.before(partner);
+    }
+  }
+
   /*
    * Store links are intentionally centralized here.
    * Paste the final public App Store and Google Play URLs below after approval.
