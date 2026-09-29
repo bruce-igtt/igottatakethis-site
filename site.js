@@ -1,10 +1,9 @@
 (() => {
-  // Reciprocal Music Palace Radio placement: October 1–December 31, 2026,
-  // inclusive in Eastern time. UTC boundaries account for the DST change.
+  // Reciprocal Music Palace Radio placement begins immediately and ends
+  // after December 31, 2026, in Eastern time.
   const now = Date.now();
-  const mprStart = Date.parse('2026-10-01T04:00:00Z');
   const mprEnd = Date.parse('2027-01-01T05:00:00Z');
-  if (now >= mprStart && now < mprEnd) {
+  if (now < mprEnd) {
     const header = document.querySelector('.site-header');
     if (header) {
       const partner = document.createElement('aside');
