@@ -61,6 +61,30 @@ button { font: inherit; }
 }
 .skip-link:focus { top: 1rem; }
 
+/* Reciprocal station placement, shown by site.js only during the campaign. */
+.partner-banner {
+  position: relative;
+  z-index: 51;
+  background: #000;
+  border-bottom: 1px solid rgba(228, 206, 113, .4);
+}
+.partner-banner-link {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  display: block;
+  text-decoration: none;
+}
+.partner-banner-link:focus-visible { outline: 3px solid #ffd782; outline-offset: -4px; }
+.partner-banner-link img { display: block; width: 100%; height: auto; }
+.partner-mobile { display: none; }
+@media (max-width: 650px) {
+  .partner-banner-link img { display: none; }
+  .partner-mobile { min-height: 58px; padding: .55rem .85rem; display: flex; align-items: center; gap: .65rem; color: #e7db83; }
+  .partner-mobile strong { font-size: .92rem; line-height: 1.1; }
+  .partner-mobile span { font-size: .67rem; line-height: 1.2; color: #e8dfa2; }
+  .partner-mobile b { margin-left: auto; white-space: nowrap; font-size: .74rem; }
+}
+
 .site-header {
   position: sticky;
   top: 0;
