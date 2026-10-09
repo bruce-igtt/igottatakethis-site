@@ -11,13 +11,11 @@ Static GitHub Pages site for https://igottatakethis.com.
 - `support.html` — Support
 
 ## App-store links
-The App Store and Google Play buttons are intentionally disabled until the public store URLs are available.
+The App Store and Google Play buttons link to the live listings:
+- App Store: https://apps.apple.com/us/app/i-gotta-take-this/id6793546098
+- Google Play: https://play.google.com/store/apps/details?id=com.igottatakethis.app
 
-When approval is complete, open `site.js` and paste the two final store URLs into:
-- `STORE_URLS.apple`
-- `STORE_URLS.google`
-
-That activates every store badge without editing each page.
+Store URLs are centralized in `site.js` as `STORE_URLS.apple` and `STORE_URLS.google`. Keep the fallback links in `index.html` and `practical-uses.html` in sync so the badges also work without JavaScript.
 
 ## Brand asset
 `assets/igtt-icon.png` is the production IGTT app icon used in the header, CTA, footer, and supporting page art. The favicon and Apple touch icon are derived from it.

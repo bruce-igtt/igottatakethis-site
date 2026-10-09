@@ -19,11 +19,11 @@
 
   /*
    * Store links are intentionally centralized here.
-   * Paste the final public App Store and Google Play URLs below after approval.
+   * Keep these public App Store and Google Play URLs in sync with the HTML badges.
    */
   const STORE_URLS = {
-    apple: "",
-    google: ""
+    apple: "https://apps.apple.com/us/app/i-gotta-take-this/id6793546098",
+    google: "https://play.google.com/store/apps/details?id=com.igottatakethis.app"
   };
 
   document.querySelectorAll('[data-store]').forEach(link => {
@@ -36,7 +36,7 @@
       link.rel = 'noopener';
     } else {
       link.setAttribute('aria-disabled', 'true');
-      link.title = 'Store link will be activated after approval';
+      link.title = 'Store link is currently unavailable';
       link.addEventListener('click', event => event.preventDefault());
     }
   });
